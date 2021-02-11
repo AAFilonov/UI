@@ -20,6 +20,8 @@ namespace Lab1
         {
             InitializeComponent();
             this.MouseClick += mouseClickHandler;
+            this.MouseMove += mouseMoveHandler;
+            
             stopwatch = new Stopwatch();
             rnd = new Random();
             count = 0;
@@ -33,8 +35,10 @@ namespace Lab1
             newButton.BackColor = Color.Gray;
             newButton.FlatAppearance.BorderSize = 0;
             newButton.Click += newBtnClickHandler;
+            newButton.MouseMove += mouseMoveHandler;
         }
-       
+        bool RecordStart = false;
+        bool CircleCreated = false;
         private void mouseClickHandler(object sender, MouseEventArgs e)
         {
             var Distance = (int)numericUpDown1.Value;
@@ -54,9 +58,27 @@ namespace Lab1
             newButton.Visible = true;
 
             stopwatch.Reset();
-            stopwatch.Start();
+            CircleCreated = true;
+            RecordStart = false;
 
         }
+        Point _LastPoint = new Point();
+        private void mouseMoveHandler(object sender, MouseEventArgs e)
+        {
+            if (_LastPoint != e.Location)
+            {
+                _LastPoint = e.Location;
+                if (CircleCreated && !RecordStart)
+                {
+
+                    stopwatch.Start();
+                    RecordStart = true;
+
+                }
+            }
+        }
+
+
         int count;
         private void newBtnClickHandler(object sender, EventArgs e)
         {
@@ -73,8 +95,11 @@ namespace Lab1
             ListViewItem item = new ListViewItem(new string[] { count.ToString(), Distance.ToString(), Size.ToString(), Time.ToString() });
             listView1.Items.Add(item);
 
+            RecordStart = false;
+            CircleCreated = false;
         }
-
+        
+     
         private void buttonReset_Click(object sender, EventArgs e)
         {
             count = 0;

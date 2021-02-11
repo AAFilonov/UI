@@ -37,10 +37,10 @@ namespace Lab1
             this.label2 = new System.Windows.Forms.Label();
             this.numericUpDown2 = new System.Windows.Forms.NumericUpDown();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Distance = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Size = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonСancel = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
@@ -137,6 +137,10 @@ namespace Lab1
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
             // 
+            // number
+            // 
+            this.number.Text = "№ Опыта";
+            // 
             // Distance
             // 
             this.Distance.Text = "Дистанция";
@@ -149,10 +153,6 @@ namespace Lab1
             // Time
             // 
             this.Time.Text = "Время";
-            // 
-            // number
-            // 
-            this.number.Text = "№ Опыта";
             // 
             // buttonReset
             // 
