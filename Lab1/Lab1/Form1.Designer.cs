@@ -42,6 +42,7 @@ namespace Lab1
             this.Time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.number = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonReset = new System.Windows.Forms.Button();
+            this.buttonСancel = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -139,6 +140,7 @@ namespace Lab1
             // Distance
             // 
             this.Distance.Text = "Дистанция";
+            this.Distance.Width = 68;
             // 
             // Size
             // 
@@ -154,7 +156,7 @@ namespace Lab1
             // 
             // buttonReset
             // 
-            this.buttonReset.Location = new System.Drawing.Point(196, 466);
+            this.buttonReset.Location = new System.Drawing.Point(19, 466);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(75, 23);
             this.buttonReset.TabIndex = 7;
@@ -162,12 +164,23 @@ namespace Lab1
             this.buttonReset.UseVisualStyleBackColor = true;
             this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
+            // buttonСancel
+            // 
+            this.buttonСancel.Location = new System.Drawing.Point(196, 466);
+            this.buttonСancel.Name = "buttonСancel";
+            this.buttonСancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonСancel.TabIndex = 8;
+            this.buttonСancel.Text = "Отмена";
+            this.buttonСancel.UseVisualStyleBackColor = true;
+            this.buttonСancel.Click += new System.EventHandler(this.buttonСancel_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1224, 520);
+            this.Controls.Add(this.buttonСancel);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.label2);
@@ -200,6 +213,7 @@ namespace Lab1
         private System.Windows.Forms.ColumnHeader Size;
         private System.Windows.Forms.ColumnHeader Time;
         private System.Windows.Forms.Button buttonReset;
+        private System.Windows.Forms.Button buttonСancel;
     }
 }
 

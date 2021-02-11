@@ -80,5 +80,12 @@ namespace Lab1
             count = 0;
             listView1.Items.Clear();
         }
+
+        private void buttonСancel_Click(object sender, EventArgs e)
+        {
+            stopwatch.Stop();
+            newButton.Visible = false;
+
+        }
     }
 }
