@@ -39,12 +39,16 @@
             this.buttonReset = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.labelDesired = new System.Windows.Forms.Label();
+            this.checkBoxEx2 = new System.Windows.Forms.CheckBox();
+            this.comboBoxSize = new System.Windows.Forms.ComboBox();
+            this.comboBoxColor = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(12, 53);
+            this.buttonStart.Location = new System.Drawing.Point(12, 63);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(75, 23);
             this.buttonStart.TabIndex = 0;
@@ -86,7 +90,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(189, 53);
+            this.buttonCancel.Location = new System.Drawing.Point(189, 63);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 3;
@@ -101,7 +105,7 @@
             this.ButtonsAmount,
             this.Time});
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(12, 82);
+            this.listView1.Location = new System.Drawing.Point(12, 92);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(199, 489);
             this.listView1.TabIndex = 7;
@@ -122,7 +126,7 @@
             // 
             // buttonReset
             // 
-            this.buttonReset.Location = new System.Drawing.Point(103, 53);
+            this.buttonReset.Location = new System.Drawing.Point(103, 63);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(75, 23);
             this.buttonReset.TabIndex = 8;
@@ -132,7 +136,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(218, 83);
+            this.textBox1.Location = new System.Drawing.Point(218, 93);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(46, 488);
@@ -147,11 +151,59 @@
             this.labelDesired.Size = new System.Drawing.Size(0, 63);
             this.labelDesired.TabIndex = 10;
             // 
+            // checkBoxEx2
+            // 
+            this.checkBoxEx2.AutoSize = true;
+            this.checkBoxEx2.Location = new System.Drawing.Point(186, 33);
+            this.checkBoxEx2.Name = "checkBoxEx2";
+            this.checkBoxEx2.Size = new System.Drawing.Size(78, 17);
+            this.checkBoxEx2.TabIndex = 12;
+            this.checkBoxEx2.Text = "Задание 2";
+            this.checkBoxEx2.UseVisualStyleBackColor = true;
+            this.checkBoxEx2.CheckedChanged += new System.EventHandler(this.checkBoxEx2_CheckedChanged);
+            // 
+            // comboBoxSize
+            // 
+            this.comboBoxSize.DisplayMember = "3";
+            this.comboBoxSize.FormattingEnabled = true;
+            this.comboBoxSize.Items.AddRange(new object[] {
+            "10",
+            "11",
+            "12",
+            "14",
+            "16",
+            ""});
+            this.comboBoxSize.Location = new System.Drawing.Point(12, 31);
+            this.comboBoxSize.Name = "comboBoxSize";
+            this.comboBoxSize.Size = new System.Drawing.Size(37, 21);
+            this.comboBoxSize.TabIndex = 13;
+            // 
+            // comboBoxColor
+            // 
+            this.comboBoxColor.FormattingEnabled = true;
+            this.comboBoxColor.Location = new System.Drawing.Point(108, 31);
+            this.comboBoxColor.Name = "comboBoxColor";
+            this.comboBoxColor.Size = new System.Drawing.Size(72, 21);
+            this.comboBoxColor.TabIndex = 14;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(67, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Цвет:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 582);
+            this.ClientSize = new System.Drawing.Size(800, 593);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBoxColor);
+            this.Controls.Add(this.comboBoxSize);
+            this.Controls.Add(this.checkBoxEx2);
             this.Controls.Add(this.labelDesired);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.buttonReset);
@@ -181,6 +233,10 @@
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label labelDesired;
+        private System.Windows.Forms.CheckBox checkBoxEx2;
+        private System.Windows.Forms.ComboBox comboBoxSize;
+        private System.Windows.Forms.ComboBox comboBoxColor;
+        private System.Windows.Forms.Label label2;
     }
 }
 
