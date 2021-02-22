@@ -38,7 +38,7 @@
             this.Time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonReset = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.labelDesired = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,9 +55,24 @@
             // numericUpDown1
             // 
             this.numericUpDown1.Location = new System.Drawing.Point(144, 7);
+            this.numericUpDown1.Maximum = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.numericUpDown1.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
             this.numericUpDown1.TabIndex = 1;
+            this.numericUpDown1.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // label1
             // 
@@ -76,6 +91,7 @@
             this.buttonCancel.TabIndex = 3;
             this.buttonCancel.Text = "Отмена";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // listView1
             // 
@@ -86,7 +102,7 @@
             this.listView1.HideSelection = false;
             this.listView1.Location = new System.Drawing.Point(12, 65);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(199, 396);
+            this.listView1.Size = new System.Drawing.Size(199, 489);
             this.listView1.TabIndex = 7;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -117,23 +133,24 @@
             this.textBox1.Location = new System.Drawing.Point(218, 66);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(46, 395);
+            this.textBox1.Size = new System.Drawing.Size(46, 488);
             this.textBox1.TabIndex = 9;
             // 
-            // panel1
+            // labelDesired
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Window;
-            this.panel1.Location = new System.Drawing.Point(296, 7);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(492, 454);
-            this.panel1.TabIndex = 10;
+            this.labelDesired.AutoSize = true;
+            this.labelDesired.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
+            this.labelDesired.Location = new System.Drawing.Point(657, 13);
+            this.labelDesired.Name = "labelDesired";
+            this.labelDesired.Size = new System.Drawing.Size(0, 63);
+            this.labelDesired.TabIndex = 10;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 473);
-            this.Controls.Add(this.panel1);
+            this.ClientSize = new System.Drawing.Size(800, 574);
+            this.Controls.Add(this.labelDesired);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.listView1);
@@ -161,7 +178,7 @@
         private System.Windows.Forms.ColumnHeader Time;
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label labelDesired;
     }
 }
 
