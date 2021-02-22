@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,12 @@ namespace lab2
 
     public partial class Form1 : Form
     {
-        List<Panel> panelList;
-        Button buttonPrototype;
+        List<Panel> panelList = new List<Panel>();
+        Button buttonPrototype = new Button();
         const int MaxN = 9;
         Random rnd = new Random();
+        Stopwatch stopwatch =new Stopwatch();
+
         Point StartPoint = new Point(300, 10);
         public Form1()
         {
@@ -24,8 +27,7 @@ namespace lab2
 
             numericUpDown1.Maximum = MaxN;
 
-            panelList = new List<Panel>();
-            buttonPrototype = new Button();
+          
 
             buttonPrototype.Width = 100;
             buttonPrototype.Height = 50;
@@ -39,31 +41,74 @@ namespace lab2
             for (int i = 0; i < MaxN; i++)
             {
                 panelList.Add(new Panel());
-                panelList[i].Controls.Add(buttonPrototype);
+               
                 panelList[i].Width = buttonPrototype.Width;
                 panelList[i].Height = buttonPrototype.Height;
-                //panelList[i].Font = buttonPrototype.Font;
-                //panelList[i].BackColor = buttonPrototype.BackColor;
-                //panelList[i].ForeColor = buttonPrototype.ForeColor;
+               
+                panelList[i].BackColor = buttonPrototype.BackColor;
+                panelList[i].Padding = new System.Windows.Forms.Padding(0);
+                panelList[i].Margin = new System.Windows.Forms.Padding(0);
                 panelList[i].Visible = false;
                 panelList[i].BringToFront();
                 panelList[i].Location = new Point(StartPoint.X, StartPoint.Y + (buttonPrototype.Height + 10) * i);
+                panelList[i].Click += PanelClick;
+                //panelList[i].Font = buttonPrototype.Font;
+                //panelList[i].ForeColor = buttonPrototype.ForeColor;
+                var lbl = new Label()
+                {
+                    Height = 36,
+                    Name = "label_" + i.ToString(),
+                    Font = buttonPrototype.Font,
+                    Width = 30,
+                    ForeColor = buttonPrototype.ForeColor,
+                  
+                };
+               
+              
+      
+               
+                panelList[i].Controls.Add(lbl);
+
                 this.Controls.Add(panelList[i]);
             }
 
 
         }
 
+        int count;
+   
+
+        private void PanelClick(object sender, EventArgs e)
+        {
+            var pnl = (Panel)sender;
+            if ((int)pnl.Tag == desiredBtnNum)
+            {
+                stopwatch.Stop();
+                count++;
+
+                var N = (int)numericUpDown1.Value;
+
+                var Time = stopwatch.ElapsedMilliseconds;
+
+
+                textBox1.Text += Time + "\n";
+
+                ListViewItem item = new ListViewItem(new string[] { count.ToString(), N.ToString(), Time.ToString() });
+                listView1.Items.Add(item);
+
+                buttonStart_Click(null, null);
+            }
+        }
 
         void SetCursor(int N)
         {
             var TopBorder = panelList[0].Location.Y;
-            var BottomBorder = panelList[N].Location.Y + panelList[N].Size.Height;
+            var BottomBorder = panelList[N-1].Location.Y + panelList[N-1].Size.Height;
             var p1 = new Point(StartPoint.X + buttonPrototype.Width + 50, (TopBorder + BottomBorder) / 2);
             var p = PointToScreen(p1);
             Rectangle screenRectangle = this.RectangleToScreen(this.ClientRectangle);
             int titleHeight = screenRectangle.Top - this.Top;
-            p.Y -= titleHeight;
+            //p.Y -= titleHeight;
 
             Cursor.Position = p;
         }
@@ -92,23 +137,32 @@ namespace lab2
                 //var lbl = new Label();
                 //lbl.Text = nums[i].ToString();
                 //panelList[i].Controls.Add(lbl);
-                
+                var lbl = panelList[i].Controls.Find("label_" + i.ToString(),false)[0];
+                lbl.Location = new Point(63 - lbl.Width, 8);
+                lbl.Text = nums[i].ToString();
+                panelList[i].Tag = nums[i];
             }
         }
-
-        private void buttonStart_Click(object sender, EventArgs e)
+        void SetPanels(int N)
         {
-            int N = (int)numericUpDown1.Value;
             for (int i = 0; i < N; i++)
             {
                 panelList[i].Visible = true;
             }
+        }
+        int desiredBtnNum;
+
+        private void buttonStart_Click(object sender, EventArgs e)
+        {
+            int N = (int)numericUpDown1.Value;
+
             SetCursor(N);
-           
-            var desiredBtnNum = rnd.Next(2, N)-1;
+            SetPanels(N);
+            desiredBtnNum = rnd.Next(0, N)+1;
             labelDesired.Text = desiredBtnNum.ToString();
             SetRandomNums(N);
-
+            if (stopwatch.IsRunning) stopwatch.Reset();
+            stopwatch.Start();
 
         }
 
@@ -118,7 +172,22 @@ namespace lab2
             {
                 panelList[i].Visible = false;
             }
+  
             labelDesired.Text = "";
+            stopwatch.Reset();
+        }
+
+        private void buttonReset_Click(object sender, EventArgs e)
+        {
+            count = 0;
+            textBox1.Text = "";
+            listView1.Items.Clear();
+            buttonCancel_Click(null, null);
+        }
+
+        private void numericUpDown1_ValueChanged(object sender, EventArgs e)
+        {
+            count = 0;
         }
     }
 }

@@ -44,7 +44,7 @@
             // 
             // buttonStart
             // 
-            this.buttonStart.Location = new System.Drawing.Point(12, 36);
+            this.buttonStart.Location = new System.Drawing.Point(12, 53);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(75, 23);
             this.buttonStart.TabIndex = 0;
@@ -73,6 +73,7 @@
             0,
             0,
             0});
+            this.numericUpDown1.ValueChanged += new System.EventHandler(this.numericUpDown1_ValueChanged);
             // 
             // label1
             // 
@@ -85,7 +86,7 @@
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(189, 36);
+            this.buttonCancel.Location = new System.Drawing.Point(189, 53);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 3;
@@ -100,7 +101,7 @@
             this.ButtonsAmount,
             this.Time});
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(12, 65);
+            this.listView1.Location = new System.Drawing.Point(12, 82);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(199, 489);
             this.listView1.TabIndex = 7;
@@ -121,16 +122,17 @@
             // 
             // buttonReset
             // 
-            this.buttonReset.Location = new System.Drawing.Point(103, 36);
+            this.buttonReset.Location = new System.Drawing.Point(103, 53);
             this.buttonReset.Name = "buttonReset";
             this.buttonReset.Size = new System.Drawing.Size(75, 23);
             this.buttonReset.TabIndex = 8;
             this.buttonReset.Text = "Сброс";
             this.buttonReset.UseVisualStyleBackColor = true;
+            this.buttonReset.Click += new System.EventHandler(this.buttonReset_Click);
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(218, 66);
+            this.textBox1.Location = new System.Drawing.Point(218, 83);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(46, 488);
@@ -149,7 +151,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 574);
+            this.ClientSize = new System.Drawing.Size(800, 582);
             this.Controls.Add(this.labelDesired);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.buttonReset);
