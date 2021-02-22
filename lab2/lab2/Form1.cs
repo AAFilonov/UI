@@ -37,6 +37,7 @@ namespace lab2
 
             comboBoxColor.DataSource = new List<Item>
             {
+                new Item { Name = "Gray", Value = 0 },
                 new Item { Name = "White", Value = 1 },
                 new Item { Name = "Black", Value = 2 },
                 new Item { Name = "Yellow", Value = 3 },
@@ -47,7 +48,7 @@ namespace lab2
             };
             comboBoxColor.ValueMember = "Value";
             comboBoxColor.DisplayMember= "Name";
-            comboBoxColor.SelectedValue = 2;
+            comboBoxColor.SelectedValue = 0;
             comboBoxColor.Enabled = false;
 
             comboBoxSize.DataSource = new List<Item>
@@ -96,7 +97,8 @@ namespace lab2
                     Name = "label_" + i.ToString(),
                     Font = buttonPrototype.Font,
                     Width = 30,
-                    ForeColor = buttonPrototype.ForeColor,
+                    ForeColor = buttonPrototype.ForeColor
+                    
                   
                 };
 
@@ -122,6 +124,7 @@ namespace lab2
             if ((int)pnl.Tag == desiredBtnNum)
             {
                 stopwatch.Stop();
+             
                 count++;
 
                 var N = (int)numericUpDown1.Value;
@@ -133,7 +136,7 @@ namespace lab2
 
                 ListViewItem item = new ListViewItem(new string[] { count.ToString(), N.ToString(), Time.ToString() });
                 listView1.Items.Add(item);
-
+                stopwatch.Reset();
                 buttonStart_Click(null, null);
             }
         }
@@ -176,8 +179,10 @@ namespace lab2
                 //lbl.Text = nums[i].ToString();
                 //panelList[i].Controls.Add(lbl);
                 var lbl = panelList[i].Controls.Find("label_" + i.ToString(),false)[0];
-               
+
+                panelList[i].BackColor = buttonPrototype.BackColor;
                 lbl.Text = nums[i].ToString();
+                lbl.Font = new Font("Courier", 12, FontStyle.Regular);
                 panelList[i].Tag = nums[i];
             }
         }
@@ -189,37 +194,53 @@ namespace lab2
             }
         }
 
-        void SetDesiredStyle(int i)
+        void SetDesiredStyle(int arg, int N)
         {
-            var lbl = panelList[i].Controls.Find("label_" + i.ToString(), false)[0];
+            Panel panel=null;
+            Label lbl = null;
+            for (int i = 0; i < N; i++)
+            {
+
+                if ((int)panelList[i].Tag == arg)
+                {
+                    panel = panelList[i];
+                    lbl = (Label)panel.Controls.Find("label_" + i.ToString(), false)[0];
+                    break;
+                }
+            }
+        
           
             var color = new Color();
             switch (comboBoxColor.SelectedValue)
             {
-                case "White":
+                case 0:
+                    color = Color.Gray;
+                    break;
+                case 1:
                     color = Color.White;
                     break;
-                case "Black":
+                case 2:
                     color = Color.Black;
                     break;
-                case "Yellow":
+                case 3:
                     color = Color.Yellow;
                     break;
-                case "Green":
+                case 4:
                     color = Color.Green;
                     break;
-                case "Blue":
+                case 5:
                     color = Color.Blue;
                     break;
-                case "Red":
+                case 6:
                     color = Color.Red;
                     break;
 
 
             }
-            int size = (int)comboBoxSize.SelectedValue;
-            panelList[i].BackColor = color;
-            lbl.Font = new Font("Courier", size, FontStyle.Italic);
+            panel.BackColor = color;
+
+            int size = (int)comboBoxSize.SelectedValue;           
+            lbl.Font = new Font("Courier", size, FontStyle.Regular);
 
 
 
@@ -235,15 +256,13 @@ namespace lab2
             SetRandomNums(N);
 
             desiredBtnNum = rnd.Next(0, N)+1;
-            if (!checkBoxEx2.Checked)
+            labelDesired.Text = desiredBtnNum.ToString();
+            if (checkBoxEx2.Checked)
             {
-                labelDesired.Text = desiredBtnNum.ToString();
+                
+                SetDesiredStyle(desiredBtnNum,N);
             }
-            else
-            {
-               SetDesiredStyle(desiredBtnNum);
-            }
-
+            
 
 
            
@@ -293,6 +312,7 @@ namespace lab2
                     lbl.Location = new Point(73 - lbl.Width, 15);
                     lbl.ForeColor = Color.Black;
                 }
+                    buttonCancel_Click(null, null);
             }
             else
             {
