@@ -52,9 +52,11 @@ namespace Lab1
                 (int)(Distance * Math.Sin(rad)),
                 (int)(Distance * Math.Cos(rad))
                 );
+            int x_corr = (int)(-0.5 * Size), y_corr = (int)(-0.5 * Size), r_corr = 0;// (int)0.5 * Size;
 
-            newButton.Size = new Size(Size, Size);
-            newButton.Location = new Point(StartPosition.X + point.X, StartPosition.Y + point.Y);
+           newButton.Size = new Size(Size, Size);
+            
+            newButton.Location = new Point(StartPosition.X + point.X +x_corr + r_corr, StartPosition.Y + point.Y + y_corr + r_corr);
             newButton.Visible = true;
 
             stopwatch.Reset();
@@ -90,10 +92,12 @@ namespace Lab1
             var Time = stopwatch.ElapsedMilliseconds;
           
             toolStripStatusTime.Text = Time + " мс";
+            textBox1.Text += Time+"\n";
             newButton.Visible = false;
 
             ListViewItem item = new ListViewItem(new string[] { count.ToString(), Distance.ToString(), Size.ToString(), Time.ToString() });
             listView1.Items.Add(item);
+    
 
             RecordStart = false;
             CircleCreated = false;
@@ -104,6 +108,7 @@ namespace Lab1
         {
             count = 0;
             listView1.Items.Clear();
+            textBox1.Text = "";
         }
 
         private void buttonСancel_Click(object sender, EventArgs e)
@@ -112,5 +117,7 @@ namespace Lab1
             newButton.Visible = false;
 
         }
+
+    
     }
 }

@@ -43,6 +43,7 @@ namespace Lab1
             this.Time = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonReset = new System.Windows.Forms.Button();
             this.buttonСancel = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -174,12 +175,21 @@ namespace Lab1
             this.buttonСancel.UseVisualStyleBackColor = true;
             this.buttonСancel.Click += new System.EventHandler(this.buttonСancel_Click);
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(278, 64);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(41, 425);
+            this.textBox1.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1224, 520);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.buttonСancel);
             this.Controls.Add(this.buttonReset);
             this.Controls.Add(this.listView1);
@@ -214,6 +224,7 @@ namespace Lab1
         private System.Windows.Forms.ColumnHeader Time;
         private System.Windows.Forms.Button buttonReset;
         private System.Windows.Forms.Button buttonСancel;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
